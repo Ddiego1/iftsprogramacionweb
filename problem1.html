@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo de JavaScript</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<form method="" action="" id="formulario1">
+  Ingrese nombre:
+  <input type="text" id="usuario" name="usuario" size="20">
+  <br>
+  Ingrese clave:
+  <input type="password" id="clave" name="clave" size="20">
+  <br>
+  <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+</form>  
+
+<script>
+  window.onload=inicio;
+
+  function inicio()
+  {
+    document.getElementById("formulario1").onsubmit=validar;
+  }
+
+  function validar()
+  {
+    var usu=document.getElementById("usuario").value;
+    var cla=document.getElementById("clave").value;
+    if (usu.length==0 || cla.length==0)
+    {
+      alert('El nombre de usuario o clave está vacío');
+      return false;
+    }
+    else
+      return true;
+  }
+</script>
+  
+</body>
+</html>

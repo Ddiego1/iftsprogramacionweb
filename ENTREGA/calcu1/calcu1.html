@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Calculadora1</title>
+</head>
+<body>
+        <center>
+                <p><input type="text" name="numero1" id="num1" placeholder="Ingrese numero 1">
+                <input type="text" name="numero2" id="num2" placeholder="Ingrese numero 2">
+                </p>
+
+                <p>
+                <input type="submit" onclick="operaciones('+')" value="sumar" id="sum">
+                <input type="submit" onclick="operaciones('-')" value="restar" id="res">
+                <input type="submit" onclick="operaciones('*')" value="multiplicar" id="mul">
+                <input type="submit" onclick="operaciones('/')" value="dividr" id="div">
+                </p>
+        </center>
+
+        <script>
+                function operaciones(operacion)
+                {
+                       switch (operacion) {
+                        case "+":
+                                result=Number(num1.value) + Number(num2.value);
+                                
+                                alert("La suma es: "+ result);
+                                break;
+                        case "-":
+                                result=Number(num1.value) - Number(num2.value);
+                                        
+                                alert("La resta es: "+ result);
+                                break;
+
+                        case "*":
+                                result= Number(num1.value) * Number(num2.value);
+                                alert("La multiplicacion es: "+ result);
+                                break;                
+                        case "/":
+                                result= Number(num1.value) / Number(num2.value);
+                                if(result == Infinity || isNaN(result)){
+                                alert("La division no es posible");
+                                }
+                                else{
+                                alert("La division es: "+ result);
+                                }
+                                break;
+                        default:
+                                break;
+                        }
+                }
+        </script>
+</body>
+</html>
