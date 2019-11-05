@@ -73,8 +73,6 @@ function igual(){
                     textoPantalla.innerText= result;
                 }
                 break;
-            default:
-                break;
             }
             result == Infinity ? borradoTotal() : valor1 = result;
         cambio = true;

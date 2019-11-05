@@ -5,6 +5,14 @@ var saldoCuenta = 50000;
 
 var limiteExtraccion = 10000;
 
+var agua =350
+var telefono=425
+var luz=210
+var internet=300
+
+var usuarios1 = ["cuentaAmiga1", 1]; 
+var usuarios2 = ["cuentaAmiga2", 2]; 
+
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
     cargarNombreEnPantalla();
@@ -64,11 +72,50 @@ function depositarDinero() {
 }
 
 function pagarServicio() {
-
+    var serv = Number(prompt("Seleccione el numero del servicio que desea pagar: \n1-Agua $350 \n2- Telefono $425 \n3-Luz $210 \n4-Internet $300"));
+    if(serv == !isNaN){
+    switch(serv){
+        case 1:
+            saldoCuenta -= agua;
+            break;
+        case 2:
+            saldoCuenta -= telefono;
+            break;
+        case 3:
+            saldoCuenta -= luz;
+            break;
+        case 4:
+            saldoCuenta -= internet;
+            break;
+        default:
+            alert("Seleccionar el numero del servicio que deseas pagar");
+    }
+    actualizarSaldoEnPantalla();
+    }
+    else{
+        alert("Ingrese el numero del servicio");
+    }
 }
 
 function transferirDinero() {
+    var tranf = Number(prompt("Ingrese el valor a transferir"));
+    if(tranf == !isNaN){
+        if(tranf < saldoCuenta){
+            var numcun = Number(prompt("Ingrese el numero de cuenta al que desee transferir el dinero"));
+            if(tranf == !isNaN){
+                
+            }
+            else{
 
+            }
+        }
+        else{
+            alert("no puede transferirse esa cantidad de dinero");
+        }
+    }
+    else{
+
+    }
 }
 
 function iniciarSesion() {
