@@ -48,7 +48,7 @@ function extraerDinero() {
     }
     else{
         if(valor < saldoCuenta){
-            if(valor < limiteExtraccion){
+            if(valor <= limiteExtraccion){
                 var validar= valor /100
                 if (validar % 1 == 0){  
                 restarcuenta(valor);
