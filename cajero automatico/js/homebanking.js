@@ -1,51 +1,58 @@
 //Declaración de variables
-var nombreUsuario = "AA";
+var nombreUsuario = "Diego Gomez";
+
+var contraseña = 1234;
 
 var saldoCuenta = 50000;
 
 var limiteExtraccion = 10000;
 
+var entro = false;
+
+//servicios
 var agua =350
 var telefono=425
 var luz=210
 var internet=300
 
-var usuarios1 = ["cuentaAmiga1", 1]; 
-var usuarios2 = ["cuentaAmiga2", 2]; 
+//Usuarios amigos
+var usuarios=[];
+usuarios[0] = ["cuentaAmiga1", 1]
+usuarios[1] = ["cuentaAmiga2", 2]
+
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
+    iniciarSesion();
     cargarNombreEnPantalla();
     actualizarSaldoEnPantalla();
     actualizarLimiteEnPantalla();
 }
 
-
-//Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
-    var val1 =Number(prompt("Ingrese el limite de extraccion nuevo"));
-    if(val1 == isNaN || val1 <= 0 ){
+    var valor =Number(prompt("Ingrese el limite de extraccion nuevo"));
+    if(isNaN(valor) || valor <= 0 ){
         alert("Ingresar un valor aceptado");
     }
     else{
-        limiteExtraccion = val1;
+        limiteExtraccion = valor;
         actualizarLimiteEnPantalla();
-        alert("El nuevo limite de extraccion es de " + val1);
+        alert("El nuevo limite de extraccion es de " + valor);
     }
 }
 
 function extraerDinero() {
-    var val1 =Number(prompt("Ingrese el valor que desea extraer"));
-    if(val1 == isNaN || val1 <= 0 ){
+    var valor =Number(prompt("Ingrese el valor que desea extraer"));
+    if(isNaN(valor) || valor <= 0 ){
         alert("Ingresar un valor aceptado");
     }
     else{
-        if(val1 < saldoCuenta){
-            if(val1 < limiteExtraccion){
-                var validar= val1 /100
+        if(valor < saldoCuenta){
+            if(valor < limiteExtraccion){
+                var validar= valor /100
                 if (validar % 1 == 0){  
-                restarcuenta(val1);
-                alert("Se ha retirado: "+val1 +"\nTu saldo actual es: "+saldoCuenta+ "\nY el saldo anterior era: "+(saldoCuenta + val1));
+                restarcuenta(valor);
+                alert("Se ha retirado: "+valor +"\nTu saldo actual es: "+saldoCuenta+ "\nY el saldo anterior era: "+(saldoCuenta + valor));
                 }
                 else{
                     alert("La extraccion no es valida. Solo se puede entregar billetes de 100");
@@ -62,18 +69,18 @@ function extraerDinero() {
 }
 
 function depositarDinero() {
-    var val1 =Number(prompt("Ingrese el valor a sumar"));
-    if(val1 == isNaN || val1 <= 0 ){
+    var valor =Number(prompt("Ingrese el valor a sumar"));
+    if(isNaN(valor) || valor <= 0 ){
         alert("Ingresar un valor aceptado");
     }
     else{
-        sumarcuenta(val1);
+        sumarcuenta(valor);
     }
 }
 
 function pagarServicio() {
     var serv = Number(prompt("Seleccione el numero del servicio que desea pagar: \n1-Agua $350 \n2- Telefono $425 \n3-Luz $210 \n4-Internet $300"));
-    if(serv == !isNaN){
+    if(!isNaN(serv)){
     switch(serv){
         case 1:
             saldoCuenta -= agua;
@@ -99,14 +106,23 @@ function pagarServicio() {
 
 function transferirDinero() {
     var tranf = Number(prompt("Ingrese el valor a transferir"));
-    if(tranf == !isNaN){
-        if(tranf < saldoCuenta){
+    if(!isNaN(tranf)){
+        if(tranf <= saldoCuenta){
             var numcun = Number(prompt("Ingrese el numero de cuenta al que desee transferir el dinero"));
-            if(tranf == !isNaN){
-                
+            if(!isNaN(tranf)){
+                for(var i=0;i<usuarios.length; i++ ){
+                    var usu = usuarios[i];
+                    if(usu[1]== numcun){
+                        entro = true;
+                        saldoCuenta -= tranf;
+                        actualizarSaldoEnPantalla();
+                        alert("se ha transerido: "+tranf+" pesos \nDestino: "+usu[0]);
+                    }
+                }
+                entro ? entro= false: alert("No se encuentra esa cuenta en el sistema"); 
             }
             else{
-
+                alert("Ingrese el numero de la cuenta correctamente");
             }
         }
         else{
@@ -114,12 +130,29 @@ function transferirDinero() {
         }
     }
     else{
-
+        alert("Ingrese un valor numero del saldo que quieras transferir");
     }
 }
 
 function iniciarSesion() {
+    var codigo = Number(prompt("Ingrese el codigo de su cuenta"));
+    if(codigo == contraseña){
+        alert("bienvenido "+ this.nombreUsuario +" ya puedes comenzar a realizar operaciones");
+    }
+    else{
+        alert("Codigo incorrecto se ha retenido su dinero");
+        this.saldoCuenta = 0;
+    }
+}
 
+function sumarcuenta(cash) {
+    saldoCuenta += cash;
+    actualizarSaldoEnPantalla();
+}
+
+function restarcuenta (cash) {
+    saldoCuenta -= cash;
+    actualizarSaldoEnPantalla();
 }
 
 //Funciones que actualizan el valor de las variables en el HTML
@@ -133,14 +166,4 @@ function actualizarSaldoEnPantalla() {
 
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
-}
-
-function sumarcuenta(dinerito) {
-    saldoCuenta += dinerito;
-    actualizarSaldoEnPantalla();
-}
-
-function restarcuenta (dinerito) {
-    saldoCuenta -= dinerito;
-    actualizarSaldoEnPantalla();
 }
