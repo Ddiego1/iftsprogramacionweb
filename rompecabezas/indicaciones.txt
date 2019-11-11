@@ -1,0 +1,123 @@
+Paso 0 Renombrar archivo juego.jsss a juego.js en la carpeta js
+
+Paso 1: Escribir instrucciones
+
+El objetivo de este primer paso es agregar 
+los textos correspondientes a las instrucciones 
+del juego. 
+Para ello las tendrás que agregar al arreglo 
+instrucciones que se encuentra en el código. 
+Podés agregar todas las instrucciones que quieras,
+teniendo en cuenta que tengan sentido con el 
+objetivo del juego.
+
+
+Paso 2: Mostrar instrucciones
+
+Debemos completar la función 
+mostrarInstrucciones(instrucciones). 
+Tenemos que ir recorriendo cada uno de 
+los elementos del arreglo pasado 
+por parámetro y 
+aplicarle a cada instrucción la función 
+ya implementada mostrarInstrucciónEnLista(instruccion, idLista).
+
+Paso 3: Mostrar último movimiento
+
+El arreglo de movimientos es el encargado de 
+guardar todos los movimientos realizados en el 
+juego desde el comienzo hasta el final. 
+Pero esta funcionalidad no está implementada. 
+Es por eso que tenemos que implementar una función 
+que agregue la última dirección al arreglo de 
+movimientos y, además, ejecutar a continuación 
+la función ya implementada actualizarUltimoMovimiento 
+para que se actualice el HTML.
+Ejemplo nombreQueLeDisteALaFuncion(codigosDireccion.ABAJO)
+importante usar codigos como esta en el js
+
+Paso 3 Definir grilla ganadora
+El objetivo de este primer paso es completar la función chequearSiGano(), que recorra la variable grilla y devuelva true para las grillas ganadoras (ordenadas) y false para las grillas desordenadas.
+Recordá que la variable grilla representa 
+cada pieza del HTML con un número. 
+Esta variable está en orden originalmente, 
+pero la función mezclarPiezas() 
+la va a desordenar cuando ejecutemos la
+función iniciar().
+
+la siguiente grilla(matriz) es ganadora
+[[1,2,3],[4,5,6],[7,8,9]]
+
+Paso 4
+Alerta Ganadora
+
+No sólo queremos que se gane el juego cuando tenemos la grilla ganadora, sino que también queremos mostrar una alerta que avise que ganamos.
+
+Para eso, hay que implementar la función mostrarCartelGanador(). Tenés que hacer que aparezca de alguna forma un cartel demostrando que ganaste cuando la grilla sea la correcta. Podría ser una alerta, o cualquier cosa que se te ocurra. Existen infinitas posibilidades.
+
+Recordá que, en este primer momento, la variable grilla ya está ordenada. Por eso, apenas abras tu aplicación (refrescando el documento) y toques cualquier tecla te va a mostrar el mensaje que definiste en la función mostrarCartelGanador().
+
+Paso 5
+Intercambiar las piezas
+
+Para intercambiar las posiciones de las piezas, tendremos que poder intercambiar posiciones en el arreglo de arreglo grilla.
+pensar como es el intercambio logico!!
+
+Paso 6
+Para concretar el intercambio, debemos 
+completar la función 
+intercambiarPosiciones(
+filaPos1, 
+columnaPos1, 
+filaPos2, 
+columnaPos2). 
+Y sólo tendremos que interactuar con la variable
+ grilla.
+Recordar que las grillas (matrices) empiezan 
+desde el 00 (fila cero , columna cero)
+Si tenemos la siguiente grilla:
+
+[[1, 2, 3],
+ [4, 5, 6],
+ [7, 8, 9]];
+
+y aplicamos la función intercambiarPosiciones(1, 1, 1, 2) 
+obtendremos como resultado la grilla:
+
+[[1, 2, 3],
+ [4, 6, 5],
+ [7, 8, 9]];
+
+Paso 7
+Definir Movimientos Válidos
+
+En este paso, hay que terminar la 
+función posicionValida(fila,columna). 
+Esta deberá avisar si la pieza puede moverse 
+para donde queremos que se mueva 
+(entra en el tablero de juego) 
+o no puede (se sale del tablero).
+
+A nivel lógico, tendrá que definir 
+si la fila y la columna están dentro de la grilla 
+(devolviendo true) o fuera de sus límites (false).
+
+Paso 8
+
+Por último, la función moverEnDireccion(direccion) deberá hacer que cuando el/la usuario/a toca una tecla (arriba, abajo, izquierda, derecha), la pieza vacía se intercambie con la ficha vecina correspondiente. La función actualizarPosicionVacia deberá estar implementada, para que cada vez que se mueva una ficha se actualicen las variables filaVacia y columnaVacia.
+
+Cada vez que los/as usuarios muevan las flechas del teclado, se va a ejecutar esta función. Para ganar el juego, esta función se ejecutará las veces necesarias hasta que el tablero esté ordenado, es decir, hasta que chequearSiGano() devuelva true.
+
+Si el movimiento es válido, se deberá agregar al arreglo de movimientos. Para es implementaste una función que hacía este trabajo
+
+
+PAso 9
+
+Terminá el Juego
+
+Tenés que completar los datos y funciones faltantes para que el juego funcione correctamente.
+
+
+
+
+
