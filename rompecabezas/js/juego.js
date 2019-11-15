@@ -1,5 +1,5 @@
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = ["Completa el rompecabezas crack","maquina","mastodonte","tifon de agua"];
+var instrucciones = ["Toque las flechas del teclado","Repitalo hasta que el rompecabezas este terminado"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
@@ -10,7 +10,7 @@ var grilla = [
     [4, 5, 6],
     [7, 8, 9]
 ];
-
+var grilla2 = [];
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
 Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
@@ -70,11 +70,16 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
+    var dato1 = grilla[filaPos1][columnaPos1];
+    grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
+    grilla[filaPos2][columnaPos2] = dato1;
     //COMPLETAR
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
+    filaVacia = nuevaFila;
+    columnaVacia = nuevaColumna;
     //COMPLETAR
 }
 
