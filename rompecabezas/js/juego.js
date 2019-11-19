@@ -5,7 +5,7 @@ var movimientos = [];
 
 // Representación de la grilla. Cada número representa a una pieza.
 // El 9 es la posición vacía
-var grilla = [
+var grilla = [  
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
@@ -26,15 +26,14 @@ function mostrarInstrucciones(instrucciones) {
     }
 }
 
-/* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
-y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
+/* Función que agregua la última dirección al arreglo de movimientos
+y utiliza actualizarUltimoMovimiento para mostrarlo en pantalla */
 function ultimadireccion(direccion){
   movimientos= [direccion];
   actualizarUltimoMovimiento(direccion);
 }
 
-/* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
-Existen diferentes formas de hacer este chequeo a partir de la grilla. */
+/* Función que chequea si el Rompecabezas esta en la posicion ganadora. */
 function chequearSiGano() {
   var checj = 1;
   for(i=0;i<grilla.length;i++){
@@ -48,39 +47,25 @@ function chequearSiGano() {
   if(checj == 10){
     return true;
   }
-  
-    //COMPLETAR{}
-
 }
 
-// Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
+// Funcion que muestra carteles que ganaste el rompecabezas
 function mostrarCartelGanador() {
   document.getElementById('popup').style.visibility ='visible';
-    //COMPLETAR
+  alert("Felicitaciones ganaste el rompecabezas");
 }
 
-/* Función que intercambia dos posiciones en la grilla.
-Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
-Para que tengas en cuenta:
-Si queremos intercambiar las posiciones [1,2] con la [0, 0], si hacemos: 
-arreglo[1][2] = arreglo[0][0];
-arreglo[0][0] = arreglo[1][2];
-
-En vez de intercambiar esos valores vamos a terminar teniendo en ambas posiciones el mismo valor.
-Se te ocurre cómo solucionar esto con una variable temporal?
-*/
+// Función que intercambia dos posiciones en la grilla.
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
     var dato1 = grilla[filaPos1][columnaPos1];
     grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
     grilla[filaPos2][columnaPos2] = dato1;
-    //COMPLETAR
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
     filaVacia = nuevaFila;
     columnaVacia = nuevaColumna;
-    //COMPLETAR
 }
 
 
@@ -96,7 +81,6 @@ function posicionValida(fila, columna) {
         }
       }
     }
-    //COMPLETAR
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -121,24 +105,18 @@ function moverEnDireccion(direccion) {
   else if (direccion === codigosDireccion.DERECHA) {
     nuevaFilaPiezaVacia = filaVacia ;
     nuevaColumnaPiezaVacia = columnaVacia + 1;
-    //COMPLETAR
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
     nuevaFilaPiezaVacia = filaVacia ;
     nuevaColumnaPiezaVacia = columnaVacia - 1;
-    // COMPLETAR
   }
-  /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
-  Para que esta parte del código funcione correctamente deberás haber implementado 
-  las funciones posicionValida, intercambiarPosicionesGrilla y actualizarPosicionVacia */
+  // A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
 
     if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
         intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-
-  //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
         ultimadireccion(direccion);
     }
 }
@@ -269,7 +247,9 @@ function capturarTeclas() {
             }
         
          else{
+          setTimeout(function() {
           document.getElementById('popup').style.visibility ='hidden';
+          },500);
             }
             evento.preventDefault();
         }
